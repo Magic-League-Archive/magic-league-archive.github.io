@@ -20,21 +20,27 @@
 <body>
 <h1>Nothing here.. yet!</h1>
 <p>Leave a comment!</p>
-<script src="https://giscus.app/client.js"
-        data-repo="Magic-League-Archive/magic-league-archive.github.io"
-        data-repo-id="R_kgDOPyDMug"
-        data-category="General"
-        data-category-id="DIC_kwDOPyDMus4CvlOE"
-        data-mapping="specific"
-        data-term="Disk 1"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="dark_protanopia"
-        data-lang="es"
-        crossorigin="anonymous"
-        async>
+<div id="graphcomment"></div>
+<script type="text/javascript">
+  var __semio__params = {
+    graphcommentId: "Disk-1",
+
+    behaviour: {
+    },
+
+  }
+  function __semio__onload() {
+    __semio__gc_graphlogin(__semio__params)
+  }
+
+
+  (function() {
+    var gc = document.createElement('script'); gc.type = 'text/javascript'; gc.async = true;
+    gc.onload = __semio__onload; gc.defer = true; gc.src = 'https://integration.graphcomment.com/gc_graphlogin.js?' + Date.now();
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
+  })();
+  
+
 </script>
 </div>
 </body>
