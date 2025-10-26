@@ -15,10 +15,88 @@
   <meta name="twitter:image" content="https://i.postimg.cc/ZnLMSVPJ/image.png">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <title>Distant Farlands - Disk 1</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe.css">
+  <link rel="stylesheet" href="https://unpkg.com/photoswipe-dynamic-caption-plugin@1.2.7/photoswipe-dynamic-caption-plugin.css">
 </head>
 <body>
-<h1>Nothing here.. yet!</h1>
+<section class="gallery-section">
+<h1>Welcome</h1>
+   <div class="pswp-gallery" id="gallery">
+      <div class="pswp-gallery__item">
+        <a  
+          href="https://magic-league-archive.github.io/storage/distant-farlands/disk-1/welcome/mmdf.gif" 
+          data-pswp-width="1669" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://magic-league-archive.github.io/storage/distant-farlands/disk-1/welcome/mmdf.gif" alt="Demo image 1" />
+        </a>
+        <div class="pswp-caption-content"><b>Lorem ipsum dolor (1933)</b><br>Color photograph<br>12 x 10</div>
+      </div>
+    </div>
+</section>
+
+<section class="gallery-section">
+<h1>Rage</h1>
+   <div class="pswp-gallery" id="gallery">
+      <div class="pswp-gallery__item">
+        <a  
+          href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+          data-pswp-width="1669" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="Demo image 1" />
+        </a>
+        <div class="pswp-caption-content"><b>Lorem ipsum dolor (1933)</b><br>Color photograph<br>12 x 10</div>
+      </div>
+    </div>
+</section>
+
+<section class="gallery-section">
+<h1>Repentance</h1>
+   <div class="pswp-gallery" id="gallery">
+      <div class="pswp-gallery__item">
+        <a  
+          href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+          data-pswp-width="1669" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="Demo image 1" />
+        </a>
+        <div class="pswp-caption-content"><b>Lorem ipsum dolor (1933)</b><br>Color photograph<br>12 x 10</div>
+      </div>
+    </div>
+</section>
+<section class="gallery-section">
+<h1>Crisis</h1>
+   <div class="pswp-gallery" id="gallery">
+      <div class="pswp-gallery__item">
+        <a  
+          href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+          data-pswp-width="1669" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="Demo image 1" />
+        </a>
+        <div class="pswp-caption-content"><b>Lorem ipsum dolor (1933)</b><br>Color photograph<br>12 x 10</div>
+      </div>
+    </div>
+</section>
+<section class="gallery-section">
+<h1>Revenge</h1>
+   <div class="pswp-gallery" id="gallery">
+      <div class="pswp-gallery__item">
+        <a  
+          href="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-2500.jpg" 
+          data-pswp-width="1669" 
+          data-pswp-height="2500" 
+          target="_blank">
+          <img src="https://cdn.photoswipe.com/photoswipe-demo-images/photos/2/img-200.jpg" alt="Demo image 1" />
+        </a>
+        <div class="pswp-caption-content"><b>Lorem ipsum dolor (1933)</b><br>Color photograph<br>12 x 10</div>
+      </div>
+    </div>
+</section>
 <p>Leave a comment!</p>
 <div id="graphcomment"></div>
 <script type="text/javascript">
@@ -40,8 +118,77 @@
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(gc);
   })();
   
-
 </script>
-</div>
+
+<script type="module">
+  import PhotoSwipeLightbox from 'https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe-lightbox.esm.js';
+  import PhotoSwipeDynamicCaption from 'https://unpkg.com/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js';
+
+  const preloadDimensions = async () => {
+    const links = document.querySelectorAll('.pswp-gallery__item a');
+    const promises = [];
+
+    links.forEach(link => {
+      const img = new Image();
+      img.src = link.href;
+      const promise = new Promise(resolve => {
+        img.onload = () => {
+          link.setAttribute('data-pswp-width', img.naturalWidth);
+          link.setAttribute('data-pswp-height', img.naturalHeight);
+          resolve();
+        };
+        img.onerror = resolve;
+      });
+      promises.push(promise);
+    });
+
+    await Promise.all(promises);
+  };
+
+  preloadDimensions().then(() => {
+    const lightbox = new PhotoSwipeLightbox({
+      gallerySelector: '#gallery',
+      childSelector: '.pswp-gallery__item',
+      paddingFn: (viewportSize) => {
+        return viewportSize.x < 700
+          ? { top: 0, bottom: 0, left: 0, right: 0 }
+          : { top: 30, bottom: 30, left: 0, right: 0 };
+      },
+      pswpModule: () => import('https://cdn.jsdelivr.net/npm/photoswipe@5.3.0/dist/photoswipe.esm.js')
+    });
+
+    lightbox.on('uiRegister', function () {
+      lightbox.pswp.ui.registerElement({
+        name: 'download-button',
+        order: 8,
+        isButton: true,
+        tagName: 'a',
+        html: {
+          isCustomSVG: true,
+          inner: '<path d="M20.5 14.3 17.1 18V10h-2.2v7.9l-3.4-3.6L10 16l6 6.1 6-6.1ZM23 23H9v2h14Z" id="pswp__icn-download"/>',
+          outlineID: 'pswp__icn-download'
+        },
+        onInit: (el, pswp) => {
+          el.setAttribute('download', '');
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener');
+          pswp.on('change', () => {
+            el.href = pswp.currSlide.data.src;
+          });
+        }
+      });
+    });
+
+    const captionPlugin = new PhotoSwipeDynamicCaption(lightbox, {
+      mobileLayoutBreakpoint: 700,
+      type: 'auto',
+      mobileCaptionOverlapRatio: 1
+    });
+
+    lightbox.init();
+  });
+</script>
+
+
 </body>
 </html>

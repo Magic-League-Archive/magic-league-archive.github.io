@@ -9,10 +9,61 @@ body {
   font-family: "Bebas Neue", sans-serif;
   text-align: center;
   font-size: 20px;
-  background: #2E0C49;
-  background: linear-gradient(0deg, rgba(46, 12, 73, 1) 0%, rgba(49, 29, 118, 1) 100%);
+  background: #490C0C;
+  background: linear-gradient(0deg, rgba(73, 12, 12, 1) 0%, rgba(245, 17, 17, 1) 100%);
   background-repeat: repeat;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+
+.gallery-section {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #F51111;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 40px auto;
+  max-width: 800px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.gallery-section h1 {
+  font-size: 32px;
+  margin-bottom: 16px;
+  color: #fff;
+  text-shadow: 0 0 4px #000;
+}
+
+.pswp-gallery__item {
+  flex: 0 0 auto;
+  max-width: 200px;
+  background: #111;
+  padding: 8px;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+      .pswp-gallery__item img {
+        display: block;
+      }
+.pswp-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 20px 20px;
+}
+      .pswp__dynamic-caption {
+        color: #fff;
+        width: 100%;
+      }
+      .pswp__dynamic-caption a {
+        color: #fff;
+        text-decoration: underline;
+      }
+
+button.pswp__button--test-button {
+  background: #136912 !important;
+  font-size: 20px;
+  color: #fff;
 }
