@@ -6,10 +6,9 @@ body {
   margin: 0;
   padding: 40px;
   color: #d1d1d1;
-  font-family: "Bebas Neue", sans-serif;
+  font-family: "Orbitron", sans-serif;
   text-align: center;
   font-size: 20px;
-  background: #490C0C;
   background: linear-gradient(0deg, rgba(73, 12, 12, 1) 0%, rgba(245, 17, 17, 1) 100%);
   background-repeat: repeat;
   background-size: cover;
@@ -20,7 +19,6 @@ body {
 .gallery-section {
   background: rgba(0, 0, 0, 0.3);
   border: 2px solid #F51111;
-  border-radius: 12px;
   padding: 20px;
   margin: 40px auto;
   max-width: 800px;
@@ -35,17 +33,6 @@ body {
   text-shadow: 0 0 4px #000;
 }
 
-.pswp-gallery__item {
-  flex: 0 0 auto;
-  max-width: 200px;
-  background: #111;
-  padding: 8px;
-  border-radius: 6px;
-  transition: transform 0.2s ease;
-}
-      .pswp-gallery__item img {
-        display: block;
-      }
 .pswp-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -53,17 +40,68 @@ body {
   gap: 12px;
   padding: 0 20px 20px;
 }
-      .pswp__dynamic-caption {
-        color: #fff;
-        width: 100%;
-      }
-      .pswp__dynamic-caption a {
-        color: #fff;
-        text-decoration: underline;
-      }
+
+.pswp-gallery__item {
+  flex: 0 0 auto;
+  max-width: 200px;
+  background: #111;
+  padding: 8px;
+  transition: transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.pswp-gallery__item img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.pswp__dynamic-caption {
+  background: linear-gradient(
+    to top,
+    rgb(40, 40, 40),
+    rgb(70, 70, 70)
+  );
+  box-shadow: none;
+  color: white;
+  padding: 30px 12px;
+  display: inline-block;
+  color: #fff;
+  width: 100%;
+}
+
+.pswp__dynamic-caption a {
+  color: #fff;
+  text-decoration: underline;
+}
 
 button.pswp__button--test-button {
   background: #136912 !important;
   font-size: 20px;
   color: #fff;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+    font-size: 18px;
+  }
+
+  .gallery-section {
+    padding: 16px;
+    margin: 20px auto;
+  }
+
+  .pswp-gallery {
+    padding: 0 10px 10px;
+    gap: 8px;
+  }
+
+  .pswp-gallery__item {
+    max-width: 100%;
+  }
+
+  .gallery-section h1 {
+    font-size: 24px;
+  }
 }
